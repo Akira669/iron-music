@@ -1,0 +1,32 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="iron-music-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class IronMusicApp extends Polymer.Element {
+      static get is() { return 'iron-music-app'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'iron-music-app'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(IronMusicApp.is, IronMusicApp);
+  </script>
+</dom-module>

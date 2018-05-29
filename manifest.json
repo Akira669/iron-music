@@ -1,0 +1,7 @@
+{
+  "name": "iron-music",
+  "short_name": "iron-music",
+  "description": "proyect-front-2018",
+  "start_url": "/",
+  "display": "standalone"
+}
