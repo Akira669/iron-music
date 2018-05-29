@@ -1,4 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/app-route/app-route.html">
+<link rel="import" href="../../bower_components/app-route/app-location.html">
 
 <dom-module id="iron-music-app">
   <template>
@@ -7,7 +10,49 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+     <app-location route="{{route}}"></app-location>
+        <app-route
+                route="{{route}}"
+                pattern="/:page"
+                data="{{routePage}}"
+                tail="{{subroute}}">
+        </app-route>
+
+        <iron-selector  selected="{{routePage.page}}" 
+                        attr-for-selected="name" 
+                        role="navigation" >
+        <ul>
+          <li> <a href="destacados" name="destacados">Destacados</a></li>
+          <li> <a href="potcats" name="potcats">Potcats</a></li>
+          <li> <a href="generos_animo" name="generos_animo">Generos y estados de animo</a></li>
+          <li> <a href="nuevos_lanzamientos" name="nuevos_lanzamientos">Nuevos Lanzamientos</a></li>
+          <li> <a href="descubrir" name="descubrir">Descubrir</a></li>
+        </ul>
+        </iron-selector>
+
+        <iron-pages 
+                    selected="{{routePage.page}}"
+                    attr-for-selected="name"
+                    fallback-selection="destacados"
+                    role="main">
+                <div name="destacados">
+                     <h2>[[prop1]]!</h2>
+                </div>
+                <div name="potcats">
+                     <h2>potacase!</h2>
+                </div>
+                <div name="generos_animo">
+                     <h2>Generos</h2>
+                </div>
+                <div name="nuevos_lanzamientos">
+                     <h2>Lanzamientos perros</h2>
+                </div>
+                <div name="descubrir">
+                     <h2>Descubre</h2>
+                </div>
+            </iron-pages>
+
+   
   </template>
 
   <script>
@@ -21,7 +66,7 @@
         return {
           prop1: {
             type: String,
-            value: 'iron-music-app'
+            value: 'app perrona de sputifu'
           }
         };
       }
