@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>friend-activity demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../friend-activity.html">
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic friend-activity demo</h3>
+      <demo-snippet>
+        <template>
+          <friend-activity friend-list='[{"name":"pepe","activity":"artista - cancion","last-seen":"1 h","picture":"default"}, {"name":"juanchi","activity":"artista - cancion","last-seen":"1 d","picture":"https://static.boredpanda.com/blog/wp-content/uploads/2017/01/optimistic-opossum-new-zealand-33.png"}]'></friend-activity>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
