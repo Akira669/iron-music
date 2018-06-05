@@ -1,0 +1,152 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="friend-activity">
+  <template>
+    <style>
+	
+	*{
+		box-sizing: border-box;
+		margin:0px;
+		padding:0px;
+		font-family: sans-serif;
+	}
+
+      :host {
+		--title-size:18px;
+		--subtitle-size:15px;
+		--text-size:13px;
+		--brand-white:#fefefe;
+		--brand-black:#0d0d0d;
+		--default-image-size:100px;
+      }
+	  
+	  .container{
+		
+	  }
+	  
+	  .friend-activity{
+		display:flex;
+		flex-flow:column wrap;
+		background:var(--brand-black);	  
+	  }
+	  
+	  .friend-slot{
+		display:grid;
+		grid-template-columns: var(--default-image-size) 1fr;
+		color:var(--brand-white);
+		font-size:var(--text-size);
+		margin:10px;
+	  }
+	  
+	  
+	  .friend-slot__info{
+		display:flex;
+		flex-flow:column wrap;
+		padding: 15px;
+		margin: 5px 21px;
+		
+	  }
+	  
+	  .friend-slot__image {
+		display:flex;
+		justify-content:flex-start;
+		padding:5px 10px 5px 5px;
+		
+	  }
+	  
+	  .friend-slot__image > img{
+		border-radius:50%;
+		height:var(--default-image-size);
+		width:var(--default-image-size);
+	  }
+	  
+	  .friend-activity__text{
+		color:var(--brand-white);
+		font-size:var(--text-size);
+	  }
+	  
+	  .friend-activity__title{
+		color:var(--brand-white);
+		font-size:var(--subtitle-size);
+		font-weight:bold;
+	  }
+	  
+	  .title{
+		padding:5px 10px;
+		color:var(--brand-white);
+		font-size:var(--title-size);
+		font-weight:bold;
+	  }
+	  
+	  	@media screen and (max-width:767px){
+		:host{
+		--title-size:18px;
+		--subtitle-size:14px;
+		--text-size:12px;
+		--default-image-size:50px;
+		}
+	}
+    </style>
+    
+	<div class="container">
+	<h2 class="title">Friend Activity</h2>
+	<div class="friend-activity">
+	
+	<template id="list" is="dom-repeat" items="[[friendList]]" as="friend">
+	
+		<div class="friend-slot">
+			
+			<div class="friend-slot__image">
+					<img src$="[[getUserImage(friend.picture)]]" alt="user image">			
+									  
+			</div>
+			
+			<div class="friend-slot__info">
+				<h4 class="friend-activity__title">[[friend.name]]</h4>
+				<p class="friend-activity__text">[[friend.activity]]</p>
+				
+				<p class="friend-activity__text">visto hace: [[friend.last-seen]]</p>
+				
+			</div>
+			
+		</div>
+		
+		
+	 </template>
+	</div>	
+	
+	
+  </div>	
+  </template>
+
+  <script>
+    /**
+     * `friend-activity`
+     * Displays friends activity 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class FriendActivity extends Polymer.Element {
+      static get is() { return 'friend-activity'; }
+      static get properties() {
+        return {
+          friendList: {
+            type: Array,
+            value: []
+          }
+        };
+      }
+	  
+	  getUserImage(imageSource){
+			if(imageSource == 'default')
+				return '../img/default-user.png';
+			else
+				return imageSource;
+	  }
+    }
+
+    window.customElements.define(FriendActivity.is, FriendActivity);
+  </script>
+</dom-module>
